@@ -26,6 +26,13 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
+func TestVersionedPolicyAndroidMkEntriesWithoutOutput(t *testing.T) {
+	m := &versionedPolicy{}
+	if entries := m.AndroidMkEntries(); entries != nil {
+		t.Fatalf("AndroidMkEntries() = %#v, want nil for a module without output", entries)
+	}
+}
+
 var prepareForTest = android.GroupFixturePreparers(
 	android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 		buildFlags := make(map[string]string)

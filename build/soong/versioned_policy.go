@@ -201,6 +201,12 @@ func (m *versionedPolicy) GenerateAndroidBuildActions(ctx android.ModuleContext)
 }
 
 func (m *versionedPolicy) AndroidMkEntries() []android.AndroidMkEntries {
+	// GenerateAndroidBuildActions can return early after reporting a property
+	// error. Such a module has no output and must not be exported to Android.mk.
+	if m.installSource == nil {
+		return nil
+	}
+
 	return []android.AndroidMkEntries{android.AndroidMkEntries{
 		OutputFile: android.OptionalPathForPath(m.installSource),
 		Class:      "ETC",
