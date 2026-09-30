@@ -43,6 +43,8 @@ set_prop(system_app, arm64_memtag_prop)
 set_prop(system_app, bluetooth_a2dp_offload_prop)
 set_prop(system_app, bluetooth_audio_hal_prop)
 set_prop(system_app, bluetooth_prop)
+# SystemUI persists Monet colors for the native boot animation on wallpaper/theme changes.
+set_prop(system_app, bootanim_color_prop)
 set_prop(system_app, debug_prop)
 set_prop(system_app, system_prop)
 set_prop(system_app, exported_bluetooth_prop)
